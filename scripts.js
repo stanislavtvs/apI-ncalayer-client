@@ -68,7 +68,7 @@ function getNonce() {
     authorization(dataUser,"bs4");
 }
 
-function getUser(base64,token) {
+function getUserData(base64,token) {
     const dataUser = {
         "nonce": base64,
         "signature": token,
@@ -79,7 +79,7 @@ function getUser(base64,token) {
 
 function takingTheKeyAndAuthorization(result) {
     resultConnectionsToNcalayer = connectionsToNcalayer(result)
-    resultConnectionsToNcalayer.then(onFulfilled => getUser(result,onFulfilled))
+    resultConnectionsToNcalayer.then(onFulfilled => getUserData(result,onFulfilled))
     resultConnectionsToNcalayer.then(null, onRejected => displaysErrorText("Ошибка :"+onRejected))
 }
 
